@@ -1,0 +1,12 @@
+<div class="list">
+	<div class="add"><a href="" ng-click="addTodo()">Add new</a></div>
+	<div ng-class="{'editing-item':editing,'edited':todo.edited, 'complete': todo.completed}" ng-init="todo.completed = false" ng-repeat="todo in todos | orderBy : 'completed' " class="item">
+	<input ng-model="todo.completed" type="checkbox">
+	<label ng-click="editing = true" ng-hide="editing" class="editing-lable">{{todo.name}}</label>
+	<input ng-change="todo.edited = true;" ng-focus="editing=true;" ng-blur="editing=false" ng-show="editing" ng-model="todo.name" type="text" class="editing-lable">
+	    <div class="actions">
+	    	<!-- <a href="" ng-click=" editing = !editing">edit </a> -->
+	    	<a href="" ng-click="saveTodos(todo,$index)">save </a>
+	    	<a href="" ng-click="deleteTodo(todo,$index)" class="delete">delete </a></div>
+	</div>
+</div>
